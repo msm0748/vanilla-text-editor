@@ -1,0 +1,73 @@
+:root {
+  background: #fff;
+  color: #000;
+  font-family: sans-serif;
+}
+
+.editor-toolbar {
+  margin-bottom: 1rem;
+}
+
+.editor-toolbar__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.editor-toolbar__button {
+  appearance: none;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  min-width: 4rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.editor-toolbar__button:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.editor-toolbar__button.active,
+.editor-toolbar__button.active:hover {
+  background: #000;
+  color: #fff;
+}
+
+[data-tiptap-editor] .ProseMirror {
+  border: 2px solid #000;
+  border-radius: 1rem;
+  padding: 1rem;
+  max-width: 60rem;
+}
+
+pre {
+  max-width: 40rem;
+  width: 100%;
+  background: #101010;
+  color: #fff;
+  padding: 1rem;
+  white-space: pre-wrap;
+}
+
+.my-editor strong {
+  font-weight: bold;
+}
+
+.my-editor h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.my-editor h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.my-editor em {
+  font-style: italic;
+}
+
+.my-editor img.ProseMirror-selectednode {
+  outline: 3px solid #68cef8;
+}
