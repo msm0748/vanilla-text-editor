@@ -32,6 +32,8 @@ import Image from 'https://esm.sh/@tiptap/extension-image';
   const buttons = {
     bold: document.querySelector('[data-tiptap-button="bold"]'),
     italic: document.querySelector('[data-tiptap-button="italic"]'),
+    image: document.querySelector('[data-tiptap-button="image"]'),
+    heading2: document.querySelector('[data-tiptap-button="heading2"]'),
   };
 
   const content = document.querySelector('[data-tiptap-content]');
@@ -46,11 +48,13 @@ import Image from 'https://esm.sh/@tiptap/extension-image';
 
       buttons.bold.classList.toggle('active', editor.isActive('bold'));
       buttons.italic.classList.toggle('active', editor.isActive('italic'));
+      buttons.heading2.classList.toggle('active', editor.isActive('heading', { level: 2 }));
     },
     onSelectionUpdate({ editor }) {
       console.log('selection update');
       buttons.bold.classList.toggle('active', editor.isActive('bold'));
       buttons.italic.classList.toggle('active', editor.isActive('italic'));
+      buttons.heading2.classList.toggle('active', editor.isActive('heading', { level: 2 }));
     },
     onCreate({ editor }) {
       console.log(editor.getHTML());
@@ -64,5 +68,17 @@ import Image from 'https://esm.sh/@tiptap/extension-image';
 
   buttons.italic.addEventListener('click', () => {
     editor.chain().focus().toggleItalic().run();
+  });
+
+  buttons.image.addEventListener('click', () => {
+    const url = window.prompt('URL');
+    if (url) {
+      editor.chain().focus().setImage({ src: url }).run();
+    }
+  });
+
+  buttons.heading2.addEventListener('click', () => {
+    // editor.isActive('heading', { level: 2 });
+    editor.chain().focus().toggleHeading({ level: 2 }).run();
   });
 })();
