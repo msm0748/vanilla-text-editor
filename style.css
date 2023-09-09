@@ -6,19 +6,35 @@
   font-family: sans-serif;
 }
 
+/* 에디터 툴바 */
+
 .editor-toolbar {
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .editor-toolbar__buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 11px;
 }
 
 .editor-toolbar__buttons ul {
   display: flex;
   gap: 2px;
+  position: relative;
+}
+
+.editor-toolbar__buttons ul:nth-child(n + 1):after {
+  position: absolute;
+  width: 1px;
+  height: 18px;
+  content: '';
+  display: block;
+  background-color: #ddd;
+  top: 4px;
+  bottom: 0;
+  right: -6px;
+  margin: auto;
 }
 
 .editor-toolbar__button {
@@ -26,15 +42,82 @@
   cursor: pointer;
   border: none;
   background-color: #fff;
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .editor-toolbar__button:hover {
   background: rgba(0, 0, 0, 0.1);
+}
+
+.editor-toolbar__button:hover:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-bottom: 6px solid #000;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+.editor-toolbar__button:after {
+  top: calc(100% + 5px);
+  margin: auto;
+  position: absolute;
+  display: block;
+  width: max-content;
+  color: white;
+  padding: 5px 8px;
+  background-color: #000;
+  z-index: 999;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.editor-toolbar__button[data-tiptap-button='heading2']:hover:after {
+  content: '제목1';
+}
+
+.editor-toolbar__button[data-tiptap-button='heading3']:hover:after {
+  content: '제목2';
+}
+
+.editor-toolbar__button[data-tiptap-button='paragraph']:hover:after {
+  content: '본문';
+}
+
+.editor-toolbar__button[data-tiptap-button='bold']:hover:after {
+  content: '굵게';
+}
+
+.editor-toolbar__button[data-tiptap-button='italic']:hover:after {
+  content: '기울임꼴';
+}
+
+.editor-toolbar__button[data-tiptap-button='strike']:hover:after {
+  content: '취소선';
+}
+
+.editor-toolbar__button[data-tiptap-button='left']:hover:after {
+  content: '왼쪽 정렬';
+}
+
+.editor-toolbar__button[data-tiptap-button='center']:hover:after {
+  content: '가운데 정렬';
+}
+
+.editor-toolbar__button[data-tiptap-button='right']:hover:after {
+  content: '오른쪽 정렬';
+}
+
+.editor-toolbar__button[data-tiptap-button='image']:hover:after {
+  content: '이미지 첨부';
 }
 
 .editor-toolbar__button.active,
@@ -43,24 +126,51 @@
   color: #fff;
 }
 
-[data-tiptap-editor] .ProseMirror {
-  border: 2px solid #000;
-  border-radius: 1rem;
-  padding: 1rem;
-  max-width: 60rem;
+.editor-toolbar__button span {
+  margin-top: 5px;
 }
+
+/* 제목 */
+
+.post-title {
+  margin: 20px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.post-title .textarea_tit {
+  resize: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  line-height: 40px;
+  height: 42px;
+  font-size: 30px;
+  overflow: hidden;
+}
+
+/* 에디터 본문 */
+
+[data-tiptap-editor] .ProseMirror {
+  padding: 1rem;
+  width: 100%;
+  outline: none;
+  height: 500px;
+  overflow-y: auto;
+}
+
+/* 에디터 태그 스타일 */
 
 .my-editor strong {
   font-weight: bold;
 }
 
-.my-editor h1 {
-  font-size: 32px;
+.my-editor h2 {
+  font-size: 28px;
   font-weight: bold;
 }
 
-.my-editor h2 {
-  font-size: 28px;
+.my-editor h3 {
+  font-size: 22px;
   font-weight: bold;
 }
 
