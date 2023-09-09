@@ -40,6 +40,7 @@ import TextAlign from 'https://esm.sh/@tiptap/extension-text-align';
     strike: document.querySelector('[data-tiptap-button="strike"]'),
     left: document.querySelector('[data-tiptap-button="left"]'),
     center: document.querySelector('[data-tiptap-button="center"]'),
+    right: document.querySelector('[data-tiptap-button="right"]'),
   };
 
   const content = document.querySelector('[data-tiptap-content]');
@@ -56,7 +57,7 @@ import TextAlign from 'https://esm.sh/@tiptap/extension-text-align';
     content: defaultContent,
     onUpdate({ editor }) {
       // content.innerHTML = JSON.stringify(editor.getJSON());
-      // console.log(editor.getHTML());
+      console.log(editor.getHTML());
 
       buttons.bold.classList.toggle('active', editor.isActive('bold'));
       buttons.italic.classList.toggle('active', editor.isActive('italic'));
@@ -66,6 +67,7 @@ import TextAlign from 'https://esm.sh/@tiptap/extension-text-align';
       buttons.strike.classList.toggle('active', editor.isActive('strike'));
       buttons.left.classList.toggle('active', editor.isActive({ textAlign: 'left' }));
       buttons.center.classList.toggle('active', editor.isActive({ textAlign: 'center' }));
+      buttons.right.classList.toggle('active', editor.isActive({ textAlign: 'right' }));
     },
     onSelectionUpdate({ editor }) {
       console.log('selection update');
@@ -77,6 +79,7 @@ import TextAlign from 'https://esm.sh/@tiptap/extension-text-align';
       buttons.strike.classList.toggle('active', editor.isActive('strike'));
       buttons.left.classList.toggle('active', editor.isActive({ textAlign: 'left' }));
       buttons.center.classList.toggle('active', editor.isActive({ textAlign: 'center' }));
+      buttons.right.classList.toggle('active', editor.isActive({ textAlign: 'right' }));
     },
     onCreate({ editor }) {
       console.log(editor.getHTML());
@@ -121,5 +124,9 @@ import TextAlign from 'https://esm.sh/@tiptap/extension-text-align';
 
   buttons.center.addEventListener('click', () => {
     editor.chain().focus().setTextAlign('center').run();
+  });
+
+  buttons.right.addEventListener('click', () => {
+    editor.chain().focus().setTextAlign('right').run();
   });
 })();

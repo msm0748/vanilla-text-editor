@@ -1,3 +1,5 @@
+@import url('./reset.css');
+
 :root {
   background: #fff;
   color: #000;
@@ -11,17 +13,24 @@
 .editor-toolbar__buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 8px;
+}
+
+.editor-toolbar__buttons ul {
+  display: flex;
+  gap: 2px;
 }
 
 .editor-toolbar__button {
-  appearance: none;
-  border: 2px solid #000;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  min-width: 4rem;
-  background: transparent;
+  border-radius: 3px;
   cursor: pointer;
+  border: none;
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .editor-toolbar__button:hover {
@@ -39,15 +48,6 @@
   border-radius: 1rem;
   padding: 1rem;
   max-width: 60rem;
-}
-
-pre {
-  max-width: 40rem;
-  width: 100%;
-  background: #101010;
-  color: #fff;
-  padding: 1rem;
-  white-space: pre-wrap;
 }
 
 .my-editor strong {
@@ -70,4 +70,8 @@ pre {
 
 .my-editor img.ProseMirror-selectednode {
   outline: 3px solid #68cef8;
+}
+
+.editor-toolbar .bi {
+  font-size: 20px;
 }
